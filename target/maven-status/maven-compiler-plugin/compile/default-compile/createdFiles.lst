@@ -1,0 +1,14 @@
+test\java\BasePage\BasePageSetup.class
+main\java\pageEvents\AmazonHomePageEvents.class
+main\java\utils\TestCaseRetryAnalyzerOnFail.class
+main\java\utils\SuiteListener.class
+main\java\utils\ElementFetch.class
+main\java\pageObjects\AmazonSuccessfulLoginPage.class
+main\java\pageEvents\AmazonSuccessfulLogInPageEvents.class
+main\java\pageObjects\AmazonHomePageElements.class
+test\java\BasePage\AmazonExistingUserLogin.class
+main\java\pageObjects\AmazonSigInPageElementsEmailOrMobileNumber.class
+main\java\pageObjects\AmazonSigInPasswordPage.class
+main\java\pageEvents\AmazonLoginPageEmailOrMobileNumberPageEvents.class
+main\java\pageEvents\AmazonSignInPasswordPageEvents.class
+main\java\utils\Constants.class

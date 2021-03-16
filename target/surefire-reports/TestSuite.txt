@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 3, Failures: 1, Errors: 0, Skipped: 2, Time elapsed: 1.823 s <<< FAILURE! - in TestSuite
+test.java.BasePage.AmazonExistingUserLogin.BeforeMethod[chrome, public void test.java.BasePage.AmazonExistingUserLogin.AmazonUserLogin()](0)  Time elapsed: 1.087 s  <<< FAILURE!
+java.lang.NoClassDefFoundError: org/openqa/selenium/internal/Require
+Caused by: java.lang.ClassNotFoundException: org.openqa.selenium.internal.Require
+

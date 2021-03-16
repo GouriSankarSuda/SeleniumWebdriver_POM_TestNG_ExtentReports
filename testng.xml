@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+<suite name="Amazon Sample Tests" >
+
+
+    <listeners>
+       <listener class-name="main.java.utils.SuiteListener"/>
+    </listeners>
+
+
+
+    <test name="Amazon Tests" >
+
+        <parameter name="browserName" value="chrome"/>
+
+        <classes>
+
+            <class name ="test.java.BasePage.AmazonExistingUserLogin"/>
+            <class name ="test.java.BasePage.NewCustomerRegistrationStartHere"/>
+            <class name ="test.java.BasePage.HelloSelectYourAddress"/>
+
+        </classes>
+
+    </test>
+
+</suite>
