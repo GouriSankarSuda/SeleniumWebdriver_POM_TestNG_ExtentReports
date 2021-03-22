@@ -65,13 +65,14 @@ public class AmazonNewUserCreationPageEvents {
 
     public void ClickOnAlreadyHaveanAccountSignIn(){
         ElementFetch elementFetch=new ElementFetch();
-        Assert.assertTrue(elementFetch.getWebElement("xpath", AmazonNewUserCreationPage.AlreadyHaveAnAccount_SignIn).isDisplayed());
-        Assert.assertTrue(elementFetch.getWebElement("xpath", AmazonNewUserCreationPage.AlreadyHaveAnAccount_SignIn).isEnabled());
-        elementFetch.getWebElement("xpath", AmazonNewUserCreationPage.AlreadyHaveAnAccount_SignIn).click();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
+           Assert.assertTrue(elementFetch.getWebElement("xpath", AmazonNewUserCreationPage.AlreadyHaveAnAccount_SignIn).isDisplayed());
+           Assert.assertTrue(elementFetch.getWebElement("xpath", AmazonNewUserCreationPage.AlreadyHaveAnAccount_SignIn).isEnabled());
+           elementFetch.getWebElement("xpath", AmazonNewUserCreationPage.AlreadyHaveAnAccount_SignIn).click();
+              driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
-    public void ClickOnCreateAFreeBusinessAccount(){
+    public void ClickOnCreateAFreeBusinessAccount() {
         ElementFetch elementFetch=new ElementFetch();
         Assert.assertTrue(elementFetch.getWebElement("xpath", AmazonNewUserCreationPage.CreateAFreeBusinessAccount).isDisplayed());
         Assert.assertTrue(elementFetch.getWebElement("xpath", AmazonNewUserCreationPage.CreateAFreeBusinessAccount).isEnabled());

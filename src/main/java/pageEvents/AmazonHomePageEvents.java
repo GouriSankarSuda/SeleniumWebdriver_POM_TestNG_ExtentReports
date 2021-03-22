@@ -4,41 +4,39 @@ package main.java.pageEvents;
 import main.java.pageObjects.AmazonHomePageElements;
 import main.java.utils.ElementFetch;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.FluentWait;
-import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
+import test.java.BasePageSetup;
 
-import java.time.Duration;
-import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 public class AmazonHomePageEvents {
 
     WebDriver driver;
-    ElementFetch elementFetch = new ElementFetch();
+
 
     public void ClickOnAmazonLogo() {
-
-        Assert.assertTrue(elementFetch.getWebElement("xapth", AmazonHomePageElements.AmazonHomepage_Logo).isDisplayed(), "Product Search not displayed");
-        Assert.assertTrue(elementFetch.getWebElement("xapth", AmazonHomePageElements.AmazonHomepage_Logo).isEnabled(), "Product Search not Enabled");
-        elementFetch.getWebElement("xpath", AmazonHomePageElements.AmazonHomepage_Logo).click();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        ElementFetch elementFetch = new ElementFetch();
+        elementFetch.getWebElement("ID", AmazonHomePageElements.AmazonHomepage_Logo).click();
+        //driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     public void ClickOnSelectYourAddress() {
-
+        ElementFetch elementFetch = new ElementFetch();
         Assert.assertTrue(elementFetch.getWebElement("xapth", AmazonHomePageElements.AmazonHomepage_SelectYourAddressLink).isDisplayed(), "Product Search not displayed");
         Assert.assertTrue(elementFetch.getWebElement("xapth", AmazonHomePageElements.AmazonHomepage_SelectYourAddressLink).isEnabled(), "Product Search not Enabled");
         elementFetch.getWebElement("xpath", AmazonHomePageElements.AmazonHomepage_SelectYourAddressLink).click();
+        BasePageSetup.logger.info(" Select your Address btn is successfullu  clicked ");
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
     public void ClickOnProductCatagory() {
-
+        ElementFetch elementFetch = new ElementFetch();
         Assert.assertTrue(elementFetch.getWebElement("xapth", AmazonHomePageElements.AmazonHomepage_ProductCatagory).isDisplayed(), "Product Search not displayed");
         Assert.assertTrue(elementFetch.getWebElement("xapth", AmazonHomePageElements.AmazonHomepage_ProductCatagory).isEnabled(), "Product Search not Enabled");
         elementFetch.getWebElement("xpath", AmazonHomePageElements.AmazonHomepage_ProductCatagory).click();
+        BasePageSetup.logger.info(" Product Catagory btn is successfullu  clicked ");
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
     }
 
@@ -73,13 +71,17 @@ public class AmazonHomePageEvents {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
        }
 
-    public void MouseHoverSignInAccountsAndLists() {
+    public void MouseHoverSignInAccountsAndLists () {
         ElementFetch elementFetch = new ElementFetch();
-        Actions actions = new Actions(driver);
-        Assert.assertTrue(elementFetch.getWebElement("xapth", AmazonHomePageElements.AmazonHomePage_HelloSignIn_AccountAndLists).isDisplayed(), "Product Search not displayed");
-        Assert.assertTrue(elementFetch.getWebElement("xapth", AmazonHomePageElements.AmazonHomePage_HelloSignIn_AccountAndLists).isEnabled(), "Product Search not Enabled");
-        actions.moveToElement(elementFetch.getWebElement("xpath", AmazonHomePageElements.AmazonHomePage_HelloSignIn_AccountAndLists)).build().perform();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        WebElement SignInAccountsAndLists = elementFetch.getWebElement("xpath", AmazonHomePageElements.AmazonHomePage_HelloSignIn_AccountAndLists);
+//        System.out.println(SignInAccountsAndLists.getText());
+        Boolean SignInAccountsAndListsIsAvailable = SignInAccountsAndLists.isDisplayed();
+        Boolean SignInAccountsAndListsIsEnabled = SignInAccountsAndLists.isEnabled();
+        if ( SignInAccountsAndListsIsAvailable == true && SignInAccountsAndListsIsEnabled ==true ){
+            Actions actions = new Actions(driver);
+            actions.moveToElement(SignInAccountsAndLists).build().perform();
+            driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        }
     }
 
     public void ClickOnReturnsAndOrdersTab() {
@@ -92,17 +94,22 @@ public class AmazonHomePageEvents {
 
     public void ClickOnShoppingCart() {
         ElementFetch elementFetch = new ElementFetch();
-        Assert.assertTrue(elementFetch.getWebElement("xapth", AmazonHomePageElements.AmazonHomePage_CartTab).isDisplayed(), "Product Search not displayed");
-        Assert.assertTrue(elementFetch.getWebElement("xapth", AmazonHomePageElements.AmazonHomePage_CartTab).isEnabled(), "Product Search not Enabled");
-        elementFetch.getWebElement("xpath", AmazonHomePageElements.AmazonHomePage_CartTab).click();
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        WebElement ShoppingCart = elementFetch.getWebElement("xpath", AmazonHomePageElements.AmazonHomePage_CartTab);
+        Boolean ShoppingCartIsAvaiable = ShoppingCart.isDisplayed();
+        Boolean ShoppingCartIsEnabled = ShoppingCart.isEnabled();
+
+        if (ShoppingCartIsAvaiable == true && ShoppingCartIsEnabled == true) {
+            ShoppingCart.click();
+
+            driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        }
     }
 
     public void ClickOnSingInToSeeYourCurrentLocation() {
         ElementFetch elementFetch = new ElementFetch();
-        ClickOnSingInToSeeYourCurrentLocation();
+        elementFetch.getWebElement("xapth", AmazonHomePageElements.AmazonHomepage_SelectYourAddressLink).click();
         for (String winHandle : driver.getWindowHandles()) {
-            driver.switchTo().window(winHandle);
+           driver.switchTo().window(winHandle);
             Assert.assertTrue(elementFetch.getWebElement("xpath", AmazonHomePageElements.AmazonHomepage_SignToseeYourAddressBtn).isDisplayed());
             Assert.assertTrue(elementFetch.getWebElement("xpath", AmazonHomePageElements.AmazonHomepage_SignToseeYourAddressBtn).isEnabled());
             elementFetch.getWebElement("xpath", AmazonHomePageElements.AmazonHomepage_SignToseeYourAddressBtn).click();

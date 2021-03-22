@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-
-<suite name="Amazon Sample Tests" >
-
-
-    <listeners>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="AmazonSampleTests">
+   <listeners>
        <listener class-name="main.java.utils.SuiteListener"/>
     </listeners>
-
-
-
-    <test name="Amazon Tests" >
-
+    <test name="AmazonTests">
         <parameter name="browserName" value="chrome"/>
-
         <classes>
-
-            <class name ="test.java.BasePage.AmazonExistingUserLogin"/>
-            <class name ="test.java.BasePage.NewCustomerRegistrationStartHere"/>
-            <class name ="test.java.BasePage.HelloSelectYourAddress"/>
-
+            <class name ="test.java.AmazonHomePageRefresh"/>
         </classes>
-
     </test>
-
 </suite>

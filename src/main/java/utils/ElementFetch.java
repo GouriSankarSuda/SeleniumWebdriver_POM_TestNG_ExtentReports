@@ -2,7 +2,7 @@ package main.java.utils;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import test.java.BasePage.BasePageSetup;
+import test.java.BasePageSetup;
 
 import java.util.List;
 

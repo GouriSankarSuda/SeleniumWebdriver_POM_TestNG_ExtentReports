@@ -6,7 +6,7 @@ public interface AmazonHomePageElements {
 
     //  Amazon_Homepage_TopHeaderElements
 
-    String AmazonHomepage_Logo=".//div[@id='nav-logo']";
+    String AmazonHomepage_Logo="nav-logo";
     String AmazonHomepage_SelectYourAddressLink=".//a[@id='nav-global-location-popover-link']";
     String AmazonHomepage_ProductCatagory=".//div[@id='nav-search-dropdown-card']";
     String AmazonHomepage_ProductSearch=".//div[@class='nav-search-field ']";

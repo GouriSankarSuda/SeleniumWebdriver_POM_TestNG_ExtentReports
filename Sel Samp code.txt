@@ -1,0 +1,16 @@
+@BeforeMethod
+@Parameters({"browser", "baseUrl"})
+public void setUp(String browserName, String url)
+{
+	if (browserName.equalsIgnoreCase("chrome"))
+	{
+		System.setProperty("webdriver.chrome.driver", "/home/ambrish/Lockdown_Tets/SeleniumPractice/drivers/chromedriver");
+		driver= new ChromeDriver();
+		Reporter.log("Chrome Launched", true);
+	}
+	else if(browserName.equalsIgnoreCase("FireFox"))
+	{
+		System.setProperty("webdriver.gecko.driver","/home/ambrish/Lockdown_Tets/SeleniumPractice/drivers/geckodriver");
+		driver= new FirefoxDriver();
+		Reporter.log("Firefox Launched", true);	
+	}

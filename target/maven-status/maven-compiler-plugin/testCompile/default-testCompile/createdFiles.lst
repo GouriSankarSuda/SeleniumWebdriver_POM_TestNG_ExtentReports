@@ -1,2 +1,4 @@
 test\java\BasePage\BasePageSetup.class
+test\java\BasePage\NewCustomerRegistrationStartHere.class
+test\java\BasePage\HelloSelectYourAddress.class
 test\java\BasePage\AmazonExistingUserLogin.class
