@@ -8,12 +8,14 @@ import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import main.java.utils.Constants;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.ITestResult;
+import org.testng.Reporter;
 import org.testng.annotations.*;
 
 import java.io.File;
@@ -42,15 +44,17 @@ public class BasePageSetup {
 
 
     @BeforeMethod
-    @Parameters(value={"browserName"})
-    public void BeforeMethod (String browserName, Method testMethod ) {
-        logger= extent.createTest(testMethod.getName());
+    @Parameters({"browserName"})
+    public void BeforeMethod (String browserName, Method testMethod) {
+        System.out.println("*****************"+browserName);
         SetUpBrowser(browserName);
+        logger= extent.createTest(testMethod.getName());
         driver.manage().window().maximize();
         driver.get(Constants.url);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
+
 
     @AfterMethod
     public void AfterMethod(ITestResult result) {
@@ -85,19 +89,22 @@ public class BasePageSetup {
     }
 
     public void SetUpBrowser (String browserName) {
-
         if (browserName.equalsIgnoreCase( "chrome")) {
-            System.setProperty("webdriver.chrome.driver" , System.getProperty("user.dir") + File.separator + "drivers" +  File.separator + "chromedriver" ) ;
-                driver=new ChromeDriver();
+            // System.setProperty("webdriver.chrome.driver" , System.getProperty("user.dir") + File.separator + "drivers" +  File.separator + "chromedriver ) ;
+            WebDriverManager.chromedriver().setup();
+            driver=new ChromeDriver();
+            Reporter.log("Chrome Launched", true);
 
-        } else  if (browserName.equalsIgnoreCase( "firefox")) {
-
+           } else  if (browserName.equalsIgnoreCase( "firefox")) {
+           // WebDriverManager.firefoxdriver().setup();
             System.setProperty("webdriver.gecko.driver" , System.getProperty("user.dir") + File.separator + "drivers"  +  File.separator + "firefoxdriver" ) ;
             driver=new FirefoxDriver();
-
+            Reporter.log("firefox Launched", true);
     } else {
-        System.setProperty("webdriver.edge.driver",System.getProperty("user.dir") + File.separator + "drivers"  +  File.separator + "edgedriver");
-        driver=new EdgeDriver();
+           // WebDriverManager.edgedriver().setup();
+       System.setProperty("webdriver.edge.driver",System.getProperty("user.dir") + File.separator + "drivers"  +  File.separator + "edgedriver");
+       driver=new EdgeDriver();
+            Reporter.log("edge browser Launched", true);
 
     }
 }

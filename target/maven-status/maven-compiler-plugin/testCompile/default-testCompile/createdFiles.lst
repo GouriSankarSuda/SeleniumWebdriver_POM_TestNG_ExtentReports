@@ -1,4 +1,5 @@
-test\java\BasePage\BasePageSetup.class
-test\java\BasePage\NewCustomerRegistrationStartHere.class
-test\java\BasePage\HelloSelectYourAddress.class
-test\java\BasePage\AmazonExistingUserLogin.class
+test\java\BasePageSetup.class
+test\java\HelloSelectYourAddress.class
+test\java\AmazonExistingUserLogin.class
+test\java\NewCustomerRegistrationStartHere.class
+test\java\AmazonHomePageRefresh.class

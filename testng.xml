@@ -9,5 +9,6 @@
         <classes>
             <class name ="test.java.AmazonHomePageRefresh"/>
         </classes>
+
     </test>
 </suite>
