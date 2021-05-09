@@ -19,12 +19,20 @@ public class ElementFetch {
                 return BasePageSetup.driver.findElement(By.tagName(identifierValue));
             case "XPATH":
                 return BasePageSetup.driver.findElement(By.xpath(identifierValue));
+
+            case "LINKTEXT":
+                return BasePageSetup.driver.findElement(By.linkText(identifierValue));
+
+            case "PARTIALLINKTEXT":
+                return BasePageSetup.driver.findElement(By.partialLinkText(identifierValue));
+
+
             default:
                 return null;
         }
     }
 
-    public List<WebElement> getListWebelelemnts (String identifierType, String identifierValue) {
+    public List<WebElement> getListWebElements (String identifierType, String identifierValue) {
 
         switch (identifierType) {
             case "ID":
@@ -35,6 +43,8 @@ public class ElementFetch {
                 return BasePageSetup.driver.findElements(By.tagName(identifierValue));
             case "XPATH":
                 return BasePageSetup.driver.findElements(By.xpath(identifierValue));
+
+
             default:
                 return null;
         }

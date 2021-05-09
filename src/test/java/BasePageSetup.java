@@ -10,10 +10,14 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import main.java.utils.Constants;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.*;
@@ -21,6 +25,7 @@ import org.testng.annotations.*;
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Function;
 
 
 public class BasePageSetup {
@@ -32,7 +37,7 @@ public class BasePageSetup {
 
     @BeforeTest
     public void BeforeTestMethod() {
-        htmlReporter = new ExtentHtmlReporter(System.getProperty("user.dir") + File. separator + "Reports" + File.separator + " AutomationReport.html");
+        htmlReporter = new ExtentHtmlReporter(System.getProperty("\\user.dir\\") + File. separator + "Reports" + File.separator + " AutomationReport.html");
         htmlReporter.config().setEncoding("utf-8");
         htmlReporter.config().setDocumentTitle("Automation Report");
         htmlReporter.config().setReportName("Automation Test Results Report");
@@ -52,6 +57,8 @@ public class BasePageSetup {
         driver.manage().window().maximize();
         driver.get(Constants.url);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+
+
 
     }
 
@@ -82,32 +89,35 @@ public class BasePageSetup {
     }
 
 
-    @AfterTest
-    public void AfterTestMethod() {
+   // @AfterTest
+   // public void AfterTestMethod() {
 
-        extent.flush();
-    }
+   //     extent.flush();
+   // }
 
     public void SetUpBrowser (String browserName) {
-        if (browserName.equalsIgnoreCase( "chrome")) {
-            // System.setProperty("webdriver.chrome.driver" , System.getProperty("user.dir") + File.separator + "drivers" +  File.separator + "chromedriver ) ;
+        if (browserName.equalsIgnoreCase("chrome")) {
             WebDriverManager.chromedriver().setup();
-            driver=new ChromeDriver();
+            ChromeOptions options=new ChromeOptions();
+          //  options.setExperimentalOption("ExcludeSwitches", new String []{"enable-automation"});
+            driver = new ChromeDriver();
             Reporter.log("Chrome Launched", true);
 
-           } else  if (browserName.equalsIgnoreCase( "firefox")) {
-           // WebDriverManager.firefoxdriver().setup();
-            System.setProperty("webdriver.gecko.driver" , System.getProperty("user.dir") + File.separator + "drivers"  +  File.separator + "firefoxdriver" ) ;
-            driver=new FirefoxDriver();
+        } else if (browserName.equalsIgnoreCase("firefox")) {
+            System.setProperty("Webdriver.gecko.driver", System.getProperty("user.dir") + File.separator + "drivers" + File.separator + "firefoxdriver");
+            driver = new FirefoxDriver();
             Reporter.log("firefox Launched", true);
-    } else {
-           // WebDriverManager.edgedriver().setup();
-       System.setProperty("webdriver.edge.driver",System.getProperty("user.dir") + File.separator + "drivers"  +  File.separator + "edgedriver");
-       driver=new EdgeDriver();
+        } else {
+
+            System.setProperty("webdriver.edge.driver", System.getProperty("\\user.dir\\") + File.separator + "drivers" + File.separator + "edgedriver");
+            driver = new EdgeDriver();
             Reporter.log("edge browser Launched", true);
 
+        }
     }
+
+
 }
-}
+
 
 

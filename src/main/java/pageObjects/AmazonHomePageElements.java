@@ -1,6 +1,7 @@
 package main.java.pageObjects;
 
 import main.java.pageEvents.AmazonHomePageEvents;
+import org.openqa.selenium.WebElement;
 
 public interface AmazonHomePageElements {
 
@@ -14,14 +15,7 @@ public interface AmazonHomePageElements {
     String AmazonHomePage_Globalisation=".//div[@id='navbar']//div[@class='layoutToolbarPadding']//*[@id='icp-nav-flyout']";
     String AmazonHomePage_HelloSignIn_AccountAndLists ="//a[@id='nav-link-accountList']";
     String AmazonHomePage_ReturnsAndOrdersTab= ".//a[@id='nav-orders']";
-    String AmazonHomePage_CartTab=".//a[@id='nav-cart']";
-
-    //Slect Your Address PopUp Wondow Elelmts
-
-     String AmazonHomepage_SignToseeYourAddressBtn=".//span[@id='GLUXSignInButton']";
-     String AmazonHomepage_PinCode=".//input[@id='GLUXZipUpdateInput']";
-     String AmazonHomepage_PincodeApplyBtn=".//div[@class='a-column a-span4 a-span-last']";
-
+    String AmazonHomePage_CartTab="nav-cart-count-container";
 
 
 

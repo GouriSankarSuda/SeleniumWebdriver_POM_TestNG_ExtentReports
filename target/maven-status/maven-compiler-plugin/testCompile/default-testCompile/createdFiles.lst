@@ -2,4 +2,5 @@ test\java\BasePageSetup.class
 test\java\HelloSelectYourAddress.class
 test\java\AmazonExistingUserLogin.class
 test\java\NewCustomerRegistrationStartHere.class
+test\java\AmazonAddItemsToCart.class
 test\java\AmazonHomePageRefresh.class
